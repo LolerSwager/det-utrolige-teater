@@ -2,7 +2,7 @@ import Axios from "axios";
 import API_URL from "./API_URL";
 import authHeader from "./auth-header";
 
-const BaseUrl = "homelands";
+const BaseUrl = "detutroligeteater"
 
 const getList = (e) => {
   return Axios.get(`${API_URL}/${BaseUrl}/${e}`, {

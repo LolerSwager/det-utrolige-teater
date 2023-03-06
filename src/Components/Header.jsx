@@ -16,7 +16,7 @@ export default function Header() {
                         <Link to="/home">Forestillinger & Events</Link>
                     </li>
                     <li>
-                        <Link to="/home">Skuespillere</Link>
+                        <Link to="/artists">Skuespillere</Link>
                     </li>
                     <li>Login</li>
                 </ul>
@@ -31,6 +31,7 @@ const StyledHeader = styled.header`
     text-align: right;
     margin: 0 0 1rem 0;
     align-items: flex-end;
+    display: flex;
     nav {
         width: 100%;
         display: flex;
