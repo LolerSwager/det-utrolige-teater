@@ -1,13 +1,14 @@
-import reactLogo from "./assets/react.svg"
 import "./App.css"
-import Home from "./Pages/Home"
+import Footer from "./Components/Footer"
+import Header from "./Components/Header"
+import AppRouter from "./Router/AppRouter"
 
 export default function App() {
     return (
         <>
-            <header></header>
-            <Home />
-            <footer></footer>
+            <Header />
+            <AppRouter />
+            <Footer />
         </>
     )
 }
