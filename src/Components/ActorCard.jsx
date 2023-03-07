@@ -22,7 +22,7 @@ const StyledActorCard = styled.section`
     margin: 0 0 1rem 0;
     div {
         display: flex;
-        /* grid-template-columns: auto auto auto; */
+        flex-direction: row; //todo fix the fucking button
         padding: 1rem 0;
         gap: 1rem;
         img {
@@ -44,6 +44,7 @@ const StyledActorCard = styled.section`
             background-color: #30454c;
             color: #ffffff;
             border: none;
+            /* height: 40px; */
             padding: 1rem;
         }
     }

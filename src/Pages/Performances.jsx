@@ -1,7 +1,8 @@
+import styled from "styled-components"
 import EventCard from "../Components/EventCard"
 import { useGetList } from "../Hooks/useGetList"
 
-export default function Home() {
+export default function Performances() {
     const { state: event } = useGetList("events", "items")
     return (
         <main>
@@ -9,11 +10,18 @@ export default function Home() {
                 <EventCard key={items.id} data={items} />
             ))}
 
-            <article>
-                {event.slice(1, 4).map((items) => (
+            <PerformanceWrapper>
+                {event.slice(1, 6).map((items) => (
                     <EventCard key={items.id} data={items} />
                 ))}
-            </article>
+            </PerformanceWrapper>
         </main>
     )
 }
+
+const PerformanceWrapper = styled.article`
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 1rem 0;
+`

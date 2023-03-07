@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom"
 import styled from "styled-components"
 import Logo from "../assets/logo.svg"
+import { useLoginStore } from "../Hooks/useLoginStore"
 
 export default function Header() {
+    const { loggedIn } = useLoginStore()
     return (
         <StyledHeader>
             <img src={Logo} alt="logo Det Utrolige Teater" />
@@ -10,15 +12,15 @@ export default function Header() {
                 <input type="text" placeholder="INDTAST SØGEORD" />
                 <ul>
                     <li>
-                        <Link to="/home">Forside</Link>
+                        <Link to="/">Forside</Link>
                     </li>
                     <li>
-                        <Link to="/home">Forestillinger & Events</Link>
+                        <Link to="/performance">Forestillinger & Events</Link>
                     </li>
                     <li>
                         <Link to="/artists">Skuespillere</Link>
                     </li>
-                    <li>Login</li>
+                    <li>{loggedIn ? <a>Login</a> : <Link to="/mysite">Min side</Link>}</li>
                 </ul>
             </nav>
         </StyledHeader>
@@ -42,10 +44,6 @@ const StyledHeader = styled.header`
             gap: 1.5rem;
             li {
                 text-transform: uppercase;
-                color: #707070;
-                &:hover {
-                    color: #d39d5b;
-                }
                 a {
                     text-decoration: none;
                     color: #707070;

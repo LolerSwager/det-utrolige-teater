@@ -44,10 +44,10 @@ export default function Footer() {
                     <i className="fa-brands fa-square-facebook"></i>
                 </a>
                 <a href="">
-                    <i class="fa-brands fa-square-instagram"></i>
+                    <i className="fa-brands fa-square-instagram"></i>
                 </a>
                 <a href="">
-                    <i class="fa-brands fa-linkedin"></i>
+                    <i className="fa-brands fa-linkedin"></i>
                 </a>
             </div>
         </StyledFooter>
@@ -58,11 +58,14 @@ const StyledFooter = styled.footer`
     background-color: #30454c;
     color: #ffffff;
     width: 100%;
-    display: grid;
-    grid-template-columns: auto auto auto auto;
-    grid-template-rows: 1fr;
+    display: flex;
+    flex-wrap: wrap;
     div {
         padding: 3rem;
+        &:last-of-type {
+            flex: 1 1 auto;
+            text-align: right;
+        }
         h4 {
             font-size: 1.3em;
             font-weight: 700;
