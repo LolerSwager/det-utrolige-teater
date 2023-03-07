@@ -7,12 +7,19 @@ export default function Performances() {
     return (
         <main>
             {event.slice(0, 1).map((items) => (
-                <EventCard key={items.id} data={items} />
+                <EventCard key={items.id} data={items} frameType="banner" />
             ))}
-
+            <h1>Oversigt</h1>
+            <select name="" id="">
+                <option value="">Sorter efter popularitet</option>
+                <option value="">Sorter efter pris (faldende)</option>
+                <option value="">Sorter efter pris (stigende)</option>
+                <option value="">Sorter efter title (A - Å)</option>
+                <option value="">Sorter efter title (Å - A)</option>
+            </select>
             <PerformanceWrapper>
                 {event.slice(1, 6).map((items) => (
-                    <EventCard key={items.id} data={items} />
+                    <EventCard key={items.id} data={items} frameType="list" />
                 ))}
             </PerformanceWrapper>
         </main>

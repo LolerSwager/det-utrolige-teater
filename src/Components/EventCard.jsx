@@ -1,178 +1,101 @@
 import styled from "styled-components"
 
-export default function EventCard({ data }) {
+export default function EventCard({ data, frameType }) {
     return (
-        <StyledEventCard>
-            <section className="image">
+        <StyledEventCard gridDirection={frameType === "list" ? true : false}>
+            <CardImage>
                 <img src={data.image_small} alt="asd" />
-            </section>
-            <section className="title">
+            </CardImage>
+            <CardTitle>
                 <h2>{data.title}</h2>
-                <h3>{data.genre}</h3>
-            </section>
-            <section className="stage">
+                {frameType === "list" ? "" : <h3>{data.genre}</h3>}
+            </CardTitle>
+            <CardStage>
                 <p>{data.stage_name}</p>
                 <h4>
                     {data.startdate} -{data.stopdate}
                 </h4>
-            </section>
-            <section className="buttons">
-                <button>Læs Mere</button>
-                <button>køb billet</button>
-            </section>
+            </CardStage>
+            {frameType === "banner" ? (
+                ""
+            ) : (
+                <CardButtons>
+                    <button>Læs Mere</button>
+                    <button>køb billet</button>
+                </CardButtons>
+            )}
         </StyledEventCard>
     )
 }
 
 const StyledEventCard3 = styled.article`
     display: grid;
-    grid-template-columns: auto 1fr 2fr 1fr;
+    grid-template-columns: auto 1fr 1fr;
     grid-template-rows: auto;
     border: 1px solid #ad7a51;
     /*  height: 100px; */
+    min-width: 350px
     width: 100%;
-    .image {
-        height: inherit;
-        width: inherit;
-        aspect-ratio: 1/1;
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-    }
-    .title {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        color: #d39d5b;
-        padding: 1rem;
-    }
-    .stage {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        color: #707070;
-    }
-    .buttons {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 1rem;
-        padding: 1rem;
-        button {
-            padding: 1rem;
-            gap: 1rem;
-            background-color: #30454c;
-            color: #ffffff;
-            border: none;
-            font-weight: 700;
-            &: last-child {
-                background-color: #d39d5b;
-            }
-        }
-    }
-`
-
-const StyledEventCard2 = styled.article`
-    display: grid;
-    grid-template-rows: auto 1fr 2fr 1fr;
-    grid-template-columns: auto;
-    border: 1px solid #ad7a51;
-    /* height: 100px; */
-    width: 300px;
-    .image {
-        height: inherit;
-        width: inherit;
-        aspect-ratio: 1/1;
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-    }
-    .title {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        color: #d39d5b;
-        padding: 1rem;
-    }
-    .stage {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        color: #707070;
-    }
-    .buttons {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 1rem;
-        padding: 1rem;
-        button {
-            padding: 1rem;
-            gap: 1rem;
-            background-color: #30454c;
-            color: #ffffff;
-            border: none;
-            font-weight: 700;
-            &: last-child {
-                background-color: #d39d5b;
-            }
-        }
-    }
 `
 
 const StyledEventCard = styled.article`
     display: grid;
-    grid-template-columns: auto 1fr 2fr 1fr;
-    grid-template-rows: auto;
+    grid-template-columns: ${(props) => (props.gridDirection ? "auto 1fr 2fr 1fr" : "auto")};
+    grid-template-rows: ${(props) => (props.gridDirection ? "auto" : "auto 1fr 2fr 1fr")};
     border: 1px solid #ad7a51;
-    height: 100px;
-    .image {
-        height: inherit;
-        aspect-ratio: 1/1;
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border: 0.4em solid #ad7a51;
-        }
+    height: ${(props) => (props.gridDirection ? "100px" : "")};
+    min-width: 350px;
+    width: 100%;
+`
+
+//! - ----------------------------------------------------
+
+const CardImage = styled.section`
+    height: inherit;
+    width: inherit;
+    aspect-ratio: 1/1;
+    margin: 0 -4px 0 0;
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border: 0.4em solid #ad7a51;
+        margin: 0 0 -5px 0;
     }
-    .title {
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        color: #d39d5b;
+`
+
+const CardTitle = styled.section`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #d39d5b;
+    padding: 1rem;
+`
+
+const CardStage = styled.section`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #707070;
+`
+
+const CardButtons = styled.section`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
+    button {
         padding: 1rem;
-    }
-    .stage {
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        color: #707070;
-    }
-    .buttons {
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
         gap: 1rem;
-        padding: 1rem;
-        button {
-            padding: 1rem;
-            gap: 1rem;
-            background-color: #30454c;
-            color: #ffffff;
-            border: none;
-            font-weight: 700;
-            &: last-child {
-                background-color: #d39d5b;
-            }
+        background-color: #30454c;
+        color: #ffffff;
+        border: none;
+        font-weight: 700;
+        &: last-child {
+            background-color: #d39d5b;
         }
     }
 `

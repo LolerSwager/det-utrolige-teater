@@ -2,9 +2,12 @@ import { Link } from "react-router-dom"
 import styled from "styled-components"
 import Logo from "../assets/logo.svg"
 import { useLoginStore } from "../Hooks/useLoginStore"
+import { useModalStore } from "../Hooks/Modal/useModalStore"
 
 export default function Header() {
     const { loggedIn } = useLoginStore()
+    const { setModalPayload } = useModalStore()
+
     return (
         <StyledHeader>
             <img src={Logo} alt="logo Det Utrolige Teater" />
@@ -20,12 +23,21 @@ export default function Header() {
                     <li>
                         <Link to="/artists">Skuespillere</Link>
                     </li>
-                    <li>{loggedIn ? <a>Login</a> : <Link to="/mysite">Min side</Link>}</li>
+                    <li>
+                        {!loggedIn ? (
+                            <a onClick={() => setModalPayload(<p>hej med dig</p>)}>Login</a>
+                        ) : (
+                            <Link to="/mysite">Min side</Link>
+                        )}
+                    </li>
                 </ul>
             </nav>
+            <button onClick={() => setModalPayload("noget text")}>modal with text</button>
         </StyledHeader>
     )
 }
+
+//!  <a onClick={() => setModalPayload(<Login />)}>Login</a>
 
 const StyledHeader = styled.header`
     display: flex;
