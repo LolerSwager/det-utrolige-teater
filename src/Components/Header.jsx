@@ -2,7 +2,8 @@ import { Link } from "react-router-dom"
 import styled from "styled-components"
 import Logo from "../assets/logo.svg"
 import { useLoginStore } from "../Hooks/useLoginStore"
-import { useModalStore } from "../Hooks/Modal/useModalStore"
+import { useModalStore } from "./Modal/useModalStore"
+import Login from "./Login"
 
 export default function Header() {
     const { loggedIn } = useLoginStore()
@@ -25,34 +26,25 @@ export default function Header() {
                     </li>
                     <li>
                         {!loggedIn ? (
-                            <a onClick={() => setModalPayload(<p>hej med dig</p>)}>Login</a>
+                            <a onClick={() => setModalPayload(<Login />)}>Login</a>
                         ) : (
                             <Link to="/mysite">Min side</Link>
                         )}
                     </li>
                 </ul>
             </nav>
-            <button onClick={() => setModalPayload("noget text")}>modal with text</button>
         </StyledHeader>
     )
 }
 
-//!  <a onClick={() => setModalPayload(<Login />)}>Login</a>
-
 const StyledHeader = styled.header`
-    display: flex;
-    justify-content: space-between;
-    text-align: right;
     margin: 0 0 1rem 0;
-    align-items: flex-end;
-    display: flex;
     nav {
         width: 100%;
         display: flex;
-        flex-direction: column;
+        flex-wrap: wrap;
         ul {
             list-style: none;
-            display: flex;
             gap: 1.5rem;
             li {
                 text-transform: uppercase;

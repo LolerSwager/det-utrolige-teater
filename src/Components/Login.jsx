@@ -1,15 +1,16 @@
+import styled from "styled-components"
 import appService from "../Appservices/Appservice"
 import { useLoginStore } from "../Hooks/useLoginStore"
 import { useForm } from "react-hook-form"
+import { useModalStore } from "./Modal/useModalStore"
 
 export default function Login() {
-    const { loggedIn, setLoggedIn} = useLoginStore()
-
+    const { setLoggedIn } = useLoginStore()
+    const { setToggleModal } = useModalStore()
     const {
         register,
         formState: { errors },
         handleSubmit,
-        reset,
     } = useForm()
 
     const onSubmit = (submitData) => {
@@ -17,6 +18,7 @@ export default function Login() {
             try {
                 const response = await appService.login(submitData.username, submitData.password)
                 setLoggedIn(true, response.data)
+                setToggleModal("none")
             } catch (error) {
                 console.error(error)
             }
@@ -24,9 +26,7 @@ export default function Login() {
         fetchResults()
     }
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
-            <h2>Login</h2>
-            <p>Indtast dit brugernavn og adgangskode for at logge ind</p>
+        <StyledForm onSubmit={handleSubmit(onSubmit)}>
             {errors.username?.type === "required" && (
                 <p className="alert" role="alert">
                     {errors.username?.message}
@@ -54,7 +54,24 @@ export default function Login() {
                 placeholder="Adgangskode"
             />
             <button>Login</button>
-            <button onClick={() => reset()}>Anuller</button>
-        </form>
+        </StyledForm>
     )
 }
+
+const StyledForm = styled.form`
+    background-color: #ad7a51;
+    padding: 20px;
+
+    input {
+        padding: 0.5rem 1rem;
+        margin: 0.1rem;
+    }
+    button {
+        padding: 0.5rem 1rem;
+        background-color: #61e692;
+        border: none;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+        margin: 0.1rem;
+    }
+`

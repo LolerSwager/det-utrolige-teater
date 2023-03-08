@@ -36,6 +36,7 @@ const StyledEventCard3 = styled.article`
     /*  height: 100px; */
     min-width: 350px
     width: 100%;
+    font-s
 `
 
 const StyledEventCard = styled.article`
@@ -44,7 +45,7 @@ const StyledEventCard = styled.article`
     grid-template-rows: ${(props) => (props.gridDirection ? "auto" : "auto 1fr 2fr 1fr")};
     border: 1px solid #ad7a51;
     height: ${(props) => (props.gridDirection ? "100px" : "")};
-    min-width: 350px;
+    min-width: 250px;
     width: 100%;
 `
 
