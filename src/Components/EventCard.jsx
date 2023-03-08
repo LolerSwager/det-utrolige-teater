@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import styled from "styled-components"
 
 export default function EventCard({ data, frameType }) {
@@ -20,7 +21,9 @@ export default function EventCard({ data, frameType }) {
                 ""
             ) : (
                 <CardButtons>
-                    <button>Læs Mere</button>
+                    <button>
+                        <Link to={`/event/${data.id}`}>LÆS MERE</Link>
+                    </button>
                     <button>køb billet</button>
                 </CardButtons>
             )}
@@ -45,7 +48,7 @@ const StyledEventCard = styled.article`
     grid-template-rows: ${(props) => (props.gridDirection ? "auto" : "auto 1fr 2fr 1fr")};
     border: 1px solid #ad7a51;
     height: ${(props) => (props.gridDirection ? "100px" : "")};
-    min-width: 250px;
+    min-width: 200px;
     width: 100%;
 `
 
@@ -97,6 +100,12 @@ const CardButtons = styled.section`
         font-weight: 700;
         &: last-child {
             background-color: #d39d5b;
+        }
+        a {
+            color: #ffffff;
+            font-weight: 700;
+            text-decoration: none;
+            text-transform: uppercase;
         }
     }
 `

@@ -20,8 +20,13 @@ export default function Home() {
 }
 
 const EventWrapper = styled.article`
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(200px, 1fr));
     gap: 1rem;
     margin: 1rem 0;
+    @media only screen and (max-width: 700px) {
+        padding: 1rem;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(3, 1fr);
+    }
 `

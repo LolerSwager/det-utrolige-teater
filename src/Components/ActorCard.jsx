@@ -11,7 +11,9 @@ export default function ActorCard({ data }) {
                     <p>{data.description}</p>
                 </div>
 
-                <Link to={`/actor/${data.id}`}>LÆS MERE</Link>
+                <button>
+                    <Link to={`/actor/${data.id}`}>LÆS MERE</Link>
+                </button>
             </div>
         </StyledActorCard>
     )
@@ -23,10 +25,10 @@ const StyledActorCard = styled.section`
     padding: 0 0 1rem 0;
     margin: 0 0 1rem 0;
     div {
-        display: flex;
-        flex-direction: row;
-        padding: 1rem 0;
+        display: grid;
+        grid-template-columns: auto minmax(200px, 780px) auto;
         gap: 1rem;
+        padding: 1rem 0;
         img {
             aspect-ratio: 1/1;
             max-width: 200px;
@@ -35,20 +37,32 @@ const StyledActorCard = styled.section`
         div {
             display: flex;
             flex-direction: column;
+            margin: 1rem;
             h3 {
                 color: #707070;
+                text-transform: uppercase;
             }
             p {
                 color: #d39d5b;
+                overflow: hidden;
             }
         }
-        a,
         button {
-            background-color: #30454c;
-            color: #ffffff;
-            border: none;
-            /* height: 40px; */
             padding: 1rem;
+            background-color: #30454c;
+            border: none;
+            height: 50px;
+            a {
+                color: #ffffff;
+                font-weight: 700;
+                text-decoration: none;
+                text-transform: uppercase;
+            }
+        }
+        @media only screen and (max-width: 700px) {
+            padding: 1rem;
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(3, auto);
         }
     }
 `

@@ -5,6 +5,7 @@ import MySite from "../Pages/MySite"
 import Performance from "../Pages/Performances"
 import Modal from "../Components/Modal/Modal"
 import ActorsDetail from "../Pages/ActorDetail"
+import EventDetail from "../Pages/EventDetail"
 export default function AppRouter() {
     return (
         <>
@@ -14,6 +15,7 @@ export default function AppRouter() {
                 <Route path="/actors" element={<Actors />} />
                 <Route path="/actor/:id" element={<ActorsDetail />} />
                 <Route path="/performance" element={<Performance />} />
+                <Route path="/event/:id" element={<EventDetail />} />
                 <Route path="/mysite" element={<MySite />} />
             </Routes>
         </>

@@ -11,7 +11,7 @@ export default function ActorDetailsCard({ cardId }) {
             </section>
             <section>
                 <h2>{Actor.name}</h2>
-                <p>{Actor.description}</p>
+                <pre>{Actor.description}</pre>
             </section>
         </StyledArticle>
     )
@@ -20,14 +20,20 @@ export default function ActorDetailsCard({ cardId }) {
 const StyledArticle = styled.article`
     border: 1px solid #ad7a51;
     padding: 1rem;
-    display: felx;
+    display: grid;
+    grid-template-columns: auto auto;
     gap: 1rem;
     section {
         h1 {
             color: #d39d5b;
         }
-        p {
-            width: 700px;
+        pre {
+            white-space: pre-wrap;
         }
+    }
+    @media only screen and (max-width: 700px) {
+        padding: 1rem;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(2, auto);
     }
 `
