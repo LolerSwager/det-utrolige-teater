@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import styled from "styled-components"
 
 export default function ActorCard({ data }) {
@@ -9,7 +10,8 @@ export default function ActorCard({ data }) {
                     <h3>{data.name}</h3>
                     <p>{data.description}</p>
                 </div>
-                <button>LÆS MERE</button>
+
+                <Link to={`/actor/${data.id}`}>LÆS MERE</Link>
             </div>
         </StyledActorCard>
     )
@@ -22,7 +24,7 @@ const StyledActorCard = styled.section`
     margin: 0 0 1rem 0;
     div {
         display: flex;
-        flex-direction: row; //todo fix the fucking button
+        flex-direction: row;
         padding: 1rem 0;
         gap: 1rem;
         img {
@@ -40,6 +42,7 @@ const StyledActorCard = styled.section`
                 color: #d39d5b;
             }
         }
+        a,
         button {
             background-color: #30454c;
             color: #ffffff;

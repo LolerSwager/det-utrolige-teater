@@ -22,7 +22,7 @@ export default function Header() {
                         <Link to="/performance">Forestillinger & Events</Link>
                     </li>
                     <li>
-                        <Link to="/artists">Skuespillere</Link>
+                        <Link to="/actors">Skuespillere</Link>
                     </li>
                     <li>
                         {!loggedIn ? (
