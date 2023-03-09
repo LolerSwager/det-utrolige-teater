@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import EventCard from "../Components/EventCard"
+import EventBanner from "../Components/EventBanner"
 import { useGetList } from "../Hooks/useGetList"
 
 export default function Home() {
@@ -7,13 +8,17 @@ export default function Home() {
     return (
         <main>
             {event.slice(0, 1).map((items) => (
-                <EventCard key={items.id} data={items} frameType="banner" />
+                <EventBanner key={items.id} data={items} />
             ))}
 
             <EventWrapper>
-                {event.slice(1, 4).map((items) => (
-                    <EventCard key={items.id} data={items} frameType="standing" />
-                ))}
+                {event
+                    .slice(1, 6)
+                    .sort(() => Math.random() - 0.5)
+                    .slice(0, 3)
+                    .map((items) => (
+                        <EventCard key={items.id} data={items} frameType="standing" />
+                    ))}
             </EventWrapper>
         </main>
     )

@@ -1,13 +1,14 @@
 import styled from "styled-components"
 import EventCard from "../Components/EventCard"
+import EventBanner from "../Components/EventBanner"
 import { useGetList } from "../Hooks/useGetList"
 
 export default function Performances() {
     const { state: event } = useGetList("events", "items")
     return (
         <main>
-            {event.slice(0, 1).map((items) => (
-                <EventCard key={items.id} data={items} frameType="banner" />
+            {event.slice(1, 2).map((items) => (
+                <EventBanner key={items.id} data={items} />
             ))}
             <h1>Oversigt</h1>
             <select name="" id="">

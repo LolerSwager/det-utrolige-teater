@@ -19,7 +19,5 @@ export default function Actors() {
 const StyledMain = styled.main`
     border: 1px solid #ad7a51;
     padding: 1rem;
-    h1 {
-        color: #d39d5b;
-    }
+   
 `

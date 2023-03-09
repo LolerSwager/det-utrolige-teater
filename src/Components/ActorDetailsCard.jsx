@@ -24,9 +24,6 @@ const StyledArticle = styled.article`
     grid-template-columns: auto auto;
     gap: 1rem;
     section {
-        h1 {
-            color: #d39d5b;
-        }
         pre {
             white-space: pre-wrap;
         }
