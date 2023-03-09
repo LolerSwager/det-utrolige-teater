@@ -7,7 +7,7 @@ export default function EventCard({ data }) {
                 <CardStage>
                     <p>{data.stage_name}</p>
                     <h4>
-                        {data.startdate} -{data.stopdate}
+                        {console.log()} - {data.stopdate.split("-").reverse().join(".")}
                     </h4>
                 </CardStage>
                 <hr />
@@ -23,6 +23,11 @@ export default function EventCard({ data }) {
     )
 }
 
+/* new Date(parseInt(data.startdate * 1000)).toLocaleString("en-DK", {
+    month: "long",
+    year: "numeric",    
+}) */
+
 const StyledEventCard = styled.article`
     display: grid;
     border: 1px solid #ad7a51;
@@ -34,17 +39,23 @@ const StyledEventCard = styled.article`
     hr {
         margin: 1rem;
     }
-    
+    @media only screen and (max-width: 900px) {
+        /* grid-template-columns: auto;
+        grid-template-rows: auto; */
+        display: flex;
+        flex-direction: column-reverse;
+    }
 `
 const StyledSectionWrapper = styled.section`
     display: grid;
-    grid-template-rows: 1fr auto auto;
+    grid-template-rows: 1fr auto auto;'
 `
 
 const CardImage = styled.section`
     height: inherit;
     width: inherit;
     aspect-ratio: 4/2;
+    margin: 0 -1rem -6px 0;
     img {
         width: 100%;
         height: 100%;
@@ -66,7 +77,7 @@ const CardTitle = styled.section`
         font-size: 4em;
         text-align: center;
     }
-    @media only screen and (max-width: 900px) {
+    @media only screen and (max-width: 1150px) {
         h2 {
             font-size: 2em;
         }

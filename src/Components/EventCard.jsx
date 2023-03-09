@@ -7,52 +7,63 @@ export default function EventCard({ data, frameType }) {
             <CardImage>
                 <img src={data.image_small} alt="asd" />
             </CardImage>
-            <CardStage>
-                <p>{data.stage_name}</p>
-                <h4>
-                    {data.startdate} -{data.stopdate}
-                </h4>
-            </CardStage>
-            <hr />
-            <CardTitle>
-                <h2>{data.title}</h2>
-                {frameType === "list" ? "" : <h3>{data.genre}</h3>}
-            </CardTitle>
-            {frameType === "banner" ? (
-                ""
+            {frameType === "list" ? (
+                <>
+                    <CardTitle>
+                        <h2>{data.title}</h2>
+                        {frameType === "list" ? "" : <h3>{data.genre}</h3>}
+                    </CardTitle>
+                    <hr />
+                    <CardStage>
+                        <p>{data.stage_name}</p>
+                        <h4>
+                            {data.startdate} -{data.stopdate}
+                        </h4>
+                    </CardStage>
+                </>
             ) : (
-                <CardButtons>
-                    <button>
-                        <Link to={`/event/${data.id}`}>LÆS MERE</Link>
-                    </button>
-                    <button>køb billet</button>
-                </CardButtons>
+                <>
+                    <CardStage>
+                        <p>{data.stage_name}</p>
+                        <h4>
+                            {data.startdate} -{data.stopdate}
+                        </h4>
+                    </CardStage>
+                    <hr />
+                    <CardTitle>
+                        <h2>{data.title}</h2>
+                        {frameType === "list" ? "" : <h3>{data.genre}</h3>}
+                    </CardTitle>
+                </>
             )}
+            <CardButtons>
+                <button>
+                    <Link to={`/event/${data.id}`}>LÆS MERE</Link>
+                </button>
+                <button>køb billet</button>
+            </CardButtons>
         </StyledEventCard>
     )
 }
 
-const StyledEventCard3 = styled.article`
-    display: grid;
-    grid-template-columns: auto 1fr 1fr;
-    grid-template-rows: auto;
-    border: 1px solid #ad7a51;
-    min-width: 350px
-    width: 100%;
-    font-s
-`
-
 const StyledEventCard = styled.article`
     display: grid;
     border: 1px solid #ad7a51;
-    grid-template-columns: ${(props) => (props.gridDirection ? "auto 1fr auto 2fr 1fr" : "auto")};
-    grid-template-rows: ${(props) => (props.gridDirection ? "auto" : "auto 1fr auto 2fr 1fr")};
+    grid-template-columns: ${(props) => (props.gridDirection ? "auto 2fr auto 1fr auto" : "auto")};
+    grid-template-rows: ${(props) => (props.gridDirection ? "auto" : "auto 1fr auto 2fr auto")};
     height: ${(props) => (props.gridDirection ? "100px" : "")};
     min-width: 200px;
     width: 100%;
     hr {
         /* grid-area: hr; */
         margin: 1rem;
+    }
+    @media only screen and (max-width: 700px) {
+        grid-template-columns: auto;
+        grid-template-rows: auto 2fr auto 1fr auto;
+       /*  h2 {
+            text-align: center;
+        } */
     }
 `
 
@@ -78,12 +89,15 @@ const CardTitle = styled.section`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+
     color: #d39d5b;
     padding: 1rem;
     h2 {
         font-family: "Playfair Display", serif;
         color: #d39d5b;
+    }
+    h3 {
+        text-align: center;
     }
     @media only screen and (max-width: 1100px) {
         h2 {
