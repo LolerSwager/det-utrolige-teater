@@ -53,11 +53,12 @@ export default function Header() {
 const StyledHeader = styled.header`
     margin: 0 0 1rem 0;
 
-    @media only screen and (min-width: 960px) {
+    @media only screen and (min-width: 900px) {
         nav {
             display: flex;
             justify-content: space-between;
             div {
+                padding: 1rem;
                 i {
                     display: none;
                 }
@@ -68,6 +69,7 @@ const StyledHeader = styled.header`
                 }
             }
             section {
+                display: flex;
                 flex-direction: column;
                 margin: 1rem;
                 max-width: 100%;
@@ -96,7 +98,7 @@ const StyledHeader = styled.header`
             }
         }
     }
-    @media only screen and (max-width: 960px) {
+    @media only screen and (max-width: 900px) {
         nav {
             div {
                 padding: 1rem;
