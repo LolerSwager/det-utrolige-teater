@@ -7,7 +7,7 @@ export default function EventCard({ data }) {
                 <CardStage>
                     <p>{data.stage_name}</p>
                     <h4>
-                        {console.log()} - {data.stopdate.split("-").reverse().join(".")}
+                        {data.startdate.split("-").reverse().join(".")} - {data.stopdate.split("-").reverse().join(".")}
                     </h4>
                 </CardStage>
                 <hr />
@@ -23,10 +23,6 @@ export default function EventCard({ data }) {
     )
 }
 
-/* new Date(parseInt(data.startdate * 1000)).toLocaleString("en-DK", {
-    month: "long",
-    year: "numeric",    
-}) */
 
 const StyledEventCard = styled.article`
     display: grid;
@@ -75,7 +71,11 @@ const CardTitle = styled.section`
         font-family: "Playfair Display", serif;
         color: #d39d5b;
         font-size: 4em;
-        text-align: center;
+        text-align: right;
+    }
+    h3 {
+        color: #707070;
+        fontsize: 29px;
     }
     @media only screen and (max-width: 1150px) {
         h2 {
@@ -90,29 +90,5 @@ const CardStage = styled.section`
     justify-content: center;
     align-items: center;
     color: #707070;
-`
-
-const CardButtons = styled.section`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    padding: 1rem;
-    button {
-        padding: 1rem;
-        gap: 1rem;
-        background-color: #30454c;
-        color: #ffffff;
-        border: none;
-        font-weight: 700;
-        &: last-child {
-            background-color: #d39d5b;
-        }
-        a {
-            color: #ffffff;
-            font-weight: 700;
-            text-decoration: none;
-            text-transform: uppercase;
-        }
-    }
+    text-align: right;
 `

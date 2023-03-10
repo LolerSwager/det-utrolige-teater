@@ -55,13 +55,13 @@ const StyledEventCard = styled.article`
     min-width: 200px;
     width: 100%;
     hr {
-        /* grid-area: hr; */
         margin: 1rem;
     }
     @media only screen and (max-width: 700px) {
         grid-template-columns: auto;
-        grid-template-rows: auto 2fr auto 1fr auto;
-       /*  h2 {
+        grid-template-rows: auto 1fr auto 2fr auto;
+        height: 100%;
+        /*  h2 {
             text-align: center;
         } */
     }
@@ -70,7 +70,6 @@ const StyledEventCard = styled.article`
 //! - ----------------------------------------------------
 
 const CardImage = styled.section`
-    /* grid-area: img; */
     height: inherit;
     width: inherit;
     aspect-ratio: 1/1;
@@ -85,7 +84,6 @@ const CardImage = styled.section`
 `
 
 const CardTitle = styled.section`
-    /*  grid-area: title; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -97,7 +95,9 @@ const CardTitle = styled.section`
         color: #d39d5b;
     }
     h3 {
-        text-align: center;
+        align-items: right;
+        color: #707070;
+        fontsize: 29px;
     }
     @media only screen and (max-width: 1100px) {
         h2 {
@@ -112,16 +112,14 @@ const CardTitle = styled.section`
 `
 
 const CardStage = styled.section`
-    /*  grid-area: stage; */
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    padding: 1rem;
     color: #707070;
 `
 
 const CardButtons = styled.section`
-    /*  grid-area: buttons; */
     display: flex;
     align-items: center;
     justify-content: center;

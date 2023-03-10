@@ -16,7 +16,7 @@ export default function Header() {
                 <div>
                     <img src={Logo} alt="logo Det Utrolige Teater" />
                     <i
-                        class={burgerMenu === false ? "fa-solid fa-bars" : "fa-solid fa-x"}
+                        className={burgerMenu === false ? "fa-solid fa-bars" : "fa-solid fa-x"}
                         onClick={() => setBurgerMenu(!burgerMenu)}
                     ></i>
                 </div>
@@ -52,7 +52,9 @@ export default function Header() {
 
 const StyledHeader = styled.header`
     margin: 0 0 1rem 0;
-
+    i {
+        cursor: pointer;
+    }
     @media only screen and (min-width: 900px) {
         nav {
             display: flex;
